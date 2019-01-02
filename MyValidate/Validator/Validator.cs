@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyValidate.Result;
 using MyValidate.ValidateMethod;
+using System.Diagnostics;
 
 namespace MyValidate.Validator
 {
@@ -45,28 +46,9 @@ namespace MyValidate.Validator
         /// </summary>
         public List<ValidationError> Errors { get; set; }
 
-        /// <summary>
-        /// Returns a list of errors with the specified name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public List<ValidationError> ErrorByName(string name)
+        public string ErrorToString(IDisplayError error)
         {
-            return Errors.Where(o => o.Name == name).ToList();
-        }
-
-        /// <summary>
-        /// This will return a unique set of Errors by Name and return the first instance of each error.
-        /// </summary>
-        public List<ValidationError> UniqueErrors
-        {
-            get
-            {
-                return Errors
-                    .GroupBy(o => o.Name)
-                    .Select(o => o.First())
-                    .ToList();
-            }
+            return error.Show(Errors);
         }
 
         public Validator AddError(string message)
@@ -87,5 +69,27 @@ namespace MyValidate.Validator
         }
 
         #endregion
+
+        public Validator Must(Func<bool> func)
+        {
+            return Must("", func);
+        }
+
+        public Validator Must(string name, Func<bool> func)
+        {
+            return Must(name, func, messagesContainer.IsNotMessage);
+        }
+
+        public Validator Must(string name, Func<bool> func, string message)
+        {
+            if (func())
+            {
+                return AddError(name, message);
+            }
+            else
+            {
+                return NoError();
+            }
+        }
     }
 }

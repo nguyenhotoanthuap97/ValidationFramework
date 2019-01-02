@@ -22,9 +22,9 @@ namespace MyValidate.Message
             switch (code)
             {
                 case LangCode.en:
-                    return new MessagesContainer();
+                    return new EnglishMessageContainer();
                 case LangCode.vi:
-                    return new MessagesContainer();
+                    return new VietnameseMessagesContainer();
                 default:
                     return Create(LangCode.en);
             }

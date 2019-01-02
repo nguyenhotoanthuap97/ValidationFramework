@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyValidate.Message
 {
-    class VietnameseMessagesContainer: MessagesContainer
+    public class VietnameseMessagesContainer: MessagesContainer
     {
-        VietnameseMessagesContainer()
+        public VietnameseMessagesContainer()
         {
             IsNotNullMessage = "'{0}' không được phép null.";
             IsNotNullOrEmptyMessage = "'{0}' không được phép rỗng hay null .";

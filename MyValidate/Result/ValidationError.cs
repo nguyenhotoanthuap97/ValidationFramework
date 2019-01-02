@@ -28,5 +28,10 @@ namespace MyValidate.Result
 
             return error;
         }
+
+        public override string ToString()
+        {
+            return Message; 
+        }
     }
 }
