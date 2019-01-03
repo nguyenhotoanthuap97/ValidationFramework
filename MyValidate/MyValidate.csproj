@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Result\AllError.cs" />
     <Compile Include="Result\ErrorByName.cs" />
     <Compile Include="Result\IDisplayError.cs" />
     <Compile Include="Result\UniqueError.cs" />

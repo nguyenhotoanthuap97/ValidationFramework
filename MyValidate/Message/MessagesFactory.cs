@@ -8,16 +8,27 @@ namespace MyValidate.Message
 {
     class MessagesFactory
     {
+        public static MessagesFactory instance = null;
+
         private MessagesFactory()
         {
         }
 
-        public static MessagesContainer Create()
+        public static MessagesFactory getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new MessagesFactory();
+            }
+            return instance;
+        }
+
+        public MessagesContainer Create()
         {
             return Create(LangCode.en);
         }
 
-        public static MessagesContainer Create(LangCode code)
+        public MessagesContainer Create(LangCode code)
         {
             switch (code)
             {

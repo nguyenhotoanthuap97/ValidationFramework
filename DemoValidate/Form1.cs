@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MyValidate.Validator;
 using MyValidate.Message;
 using MyValidate.Result;
+using MyValidate.ValidateMethod;
 using System.Collections.Generic;
 
 namespace DemoValidate
@@ -18,14 +19,31 @@ namespace DemoValidate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Validator validator = new Validator();
+            string firstname = firstnametxb.Text;
+            string lastname = lastnametxb.Text;
+            int discount = HelperMethod.ToInt(discounttxb.Text);
+            string password = passwordtxb.Text;
+            string email = emailtxb.Text;
+
+            Validator validator = MyCustomValidator(firstname, lastname, discount, password, email);
+            MessageBox.Show(validator.ErrorToString(new AllError()));
+        }
+
+        public Validator MyCustomValidator(string firstname, string lastname, int discount, string password, string email)
+        {
             Validator validator = new Validator(LangCode.vi);
-
-            string text = (textBox1.Text);
-            validator.IsEmail("text",text);
-            MessageBox.Show(validator.ErrorToString(new ErrorByName("tn")));
-            MessageBox.Show(validator.ErrorToString(new UniqueError()));
-
+            validator.IsNotNullOrEmpty("firstname", firstname)
+                .IsNotNullOrEmpty("lastname", lastname)
+                .IsMaxLength("lastname", lastname, 40)
+                .IsNotZero("discount", discount)
+                .IsBetweenLength("email", email, 6, 40)
+                .IsEmail("email", email)
+                .IsPassword("password", password)
+                .Must("custom",()=>
+                {
+                    return false;
+                });
+            return validator;
         }
     }
 }

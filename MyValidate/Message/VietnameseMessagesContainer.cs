@@ -14,7 +14,7 @@ namespace MyValidate.Message
             IsNotNullOrEmptyMessage = "'{0}' không được phép rỗng hay null .";
             IsNotNullOrWhiteSpaceMessage = "'{0}'  không được phép null hay chỉ chứa khoảng trắng.";
             IsNotZeroMessage = "'{0}' không thể bằng 0.";
-            IsPasswordMessage = "'{0}' không phải mật khẩu. Mật khảu phải từ 8 đến 30 kí tự, ít nhất một chữ hoa, một chữ thường và một số.";
+            IsPasswordMessage = "'{0}' ít bảo mật. Mật khảu phải từ 8 đến 30 kí tự, ít nhất một chữ hoa, một chữ thường và một số.";
             IsMinLengthMessage = "'{0}' phải ít nhất có {1} kí tự.";
             IsMaxLengthMessage = "'{0}' phải có nhiều nhất {1} kí tự.";
             IsExactLengthMessage = "'{0}' phải có đúng {1} kí tự";

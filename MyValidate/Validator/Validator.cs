@@ -17,13 +17,13 @@ namespace MyValidate.Validator
         public Validator()
         {
             Errors = new List<ValidationError>();
-            messagesContainer = MessagesFactory.Create();
+            messagesContainer = MessagesFactory.getInstance().Create();
         }
 
         public Validator(LangCode code)
         {
             Errors = new List<ValidationError>();
-            messagesContainer = MessagesFactory.Create(code);
+            messagesContainer = MessagesFactory.getInstance().Create(code);
         }
 
         #endregion
@@ -39,11 +39,6 @@ namespace MyValidate.Validator
 
         #endregion
 
-        #region " Validation Errors "
-
-        /// <summary>
-        /// The full list of errors currently available
-        /// </summary>
         public List<ValidationError> Errors { get; set; }
 
         public string ErrorToString(IDisplayError error)
@@ -68,8 +63,6 @@ namespace MyValidate.Validator
             return this;
         }
 
-        #endregion
-
         public Validator Must(Func<bool> func)
         {
             return Must("", func);
@@ -77,12 +70,12 @@ namespace MyValidate.Validator
 
         public Validator Must(string name, Func<bool> func)
         {
-            return Must(name, func, messagesContainer.IsNotMessage);
+            return Must(name, func, string.Format(messagesContainer.IsNotMessage,name));
         }
 
         public Validator Must(string name, Func<bool> func, string message)
         {
-            if (func())
+            if (!func())
             {
                 return AddError(name, message);
             }
