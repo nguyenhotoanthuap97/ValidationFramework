@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace MyValidate.Validator
 {
-    public partial class Validator
+    public class Validator
     {
         #region " Constructor "
 
@@ -41,12 +41,9 @@ namespace MyValidate.Validator
 
         #region " Validation Errors "
 
-        /// <summary>
-        /// The full list of errors currently available
-        /// </summary>
         public List<ValidationError> Errors { get; set; }
 
-        public string ErrorToString(IDisplayError error)
+        public virtual string ErrorToString(IDisplayError error)
         {
             return error.Show(Errors);
         }
@@ -70,6 +67,21 @@ namespace MyValidate.Validator
 
         #endregion
 
+        public virtual Validator Check(object value)
+        {
+            return this;
+        }
+
+        public virtual Validator Check(string name, object value)
+        {
+            return this;
+        }
+
+        public virtual Validator Check(string name, object value, string message)
+        {
+            return this;
+        }
+
         public Validator Must(Func<bool> func)
         {
             return Must("", func);
@@ -84,6 +96,7 @@ namespace MyValidate.Validator
         {
             if (func())
             {
+
                 return AddError(name, message);
             }
             else
@@ -91,5 +104,6 @@ namespace MyValidate.Validator
                 return NoError();
             }
         }
+
     }
 }

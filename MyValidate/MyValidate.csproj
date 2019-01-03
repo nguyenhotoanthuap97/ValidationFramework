@@ -43,6 +43,9 @@
     <Compile Include="Result\ErrorByName.cs" />
     <Compile Include="Result\IDisplayError.cs" />
     <Compile Include="Result\UniqueError.cs" />
+    <Compile Include="SpecifyValidator\IsEmailString.cs" />
+    <Compile Include="SpecifyValidator\IsNotNullOrEmptyString.cs" />
+    <Compile Include="SpecifyValidator\IsNotNullOrWhiteSpaceString.cs" />
     <Compile Include="ValidateMethod\DatetimeValidateMethod.cs" />
     <Compile Include="ValidateMethod\HelperMethod.cs" />
     <Compile Include="ValidateMethod\IntegerValidateMethod.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="Validator\StringValidator.cs" />
     <Compile Include="Validator\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator\ValidatorWrapper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
