@@ -43,9 +43,10 @@
     <Compile Include="Result\ErrorByName.cs" />
     <Compile Include="Result\IDisplayError.cs" />
     <Compile Include="Result\UniqueError.cs" />
-    <Compile Include="SpecifyValidator\IsEmailString.cs" />
-    <Compile Include="SpecifyValidator\IsNotNullOrEmptyString.cs" />
-    <Compile Include="SpecifyValidator\IsNotNullOrWhiteSpaceString.cs" />
+    <Compile Include="SpecifyValidator\Object\IsNotNullObject.cs" />
+    <Compile Include="SpecifyValidator\String\IsEmailString.cs" />
+    <Compile Include="SpecifyValidator\String\IsNotNullOrEmptyString.cs" />
+    <Compile Include="SpecifyValidator\String\IsNotNullOrWhiteSpaceString.cs" />
     <Compile Include="ValidateMethod\DatetimeValidateMethod.cs" />
     <Compile Include="ValidateMethod\HelperMethod.cs" />
     <Compile Include="ValidateMethod\IntegerValidateMethod.cs" />

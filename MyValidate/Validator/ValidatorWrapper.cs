@@ -29,6 +29,24 @@ namespace MyValidate.Validator
             return this;
         }
 
+        public override Validator Check(object value)
+        {
+            innerValidator.Check(value);
+            return base.Check(value);
+        }
+
+        public override Validator Check(string name, object value)
+        {
+            innerValidator.Check(value);
+            return base.Check(name, value);
+        }
+
+        public override Validator Check(string name, object value, string message)
+        {
+            innerValidator.Check(value);
+            return base.Check(name, value, message);
+        }
+
         public override string ErrorToString(IDisplayError error)
         {
             string errorStr = "";
