@@ -37,7 +37,7 @@ namespace MyValidate.Message
                 case LangCode.vi:
                     return new VietnameseMessagesContainer();
                 default:
-                    return Create(LangCode.en);
+                    return new NullMessageContainer();
             }
 
         }
