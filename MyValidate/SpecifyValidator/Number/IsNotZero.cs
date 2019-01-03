@@ -1,4 +1,5 @@
 ﻿using MyValidate.Message;
+using MyValidate.ValidateMethod;
 using MyValidate.Validator;
 using System;
 using System.Collections.Generic;
@@ -6,35 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyValidate.SpecifyValidator
+namespace MyValidate.SpecifyValidator.Number
 {
-    public class IsNotNullOrWhiteSpaceString : ValidatorWrapper
+    class IsNotZero : ValidatorWrapper
     {
-        public IsNotNullOrWhiteSpaceString(LangCode code) : base(code)
+        public IsNotZero(LangCode code) : base(code)
         {
         }
 
-        public IsNotNullOrWhiteSpaceString(Validator.Validator innerValidator) : base(innerValidator)
+        public IsNotZero(Validator.Validator innerValidator) : base(innerValidator)
         {
         }
 
         public override Validator.Validator Check(object value)
         {
             base.Check(value);
-            return Check("Data", value.ToString());
+            return Check("Data", value);
         }
 
         public override Validator.Validator Check(string name, object value)
         {
             base.Check(value);
-            return Check(name, value.ToString(), string.Format(messagesContainer.IsNotNullOrWhiteSpaceMessage, name));
+            return Check(name, value, string.Format(messagesContainer.IsNotZeroMessage, name));
         }
 
         public override Validator.Validator Check(string name, object value, string message)
         {
             base.Check(value);
             // do the check
-            if (value.ToString().IsNotNullOrWhiteSpace())
+            if (Int32.Parse(value.ToString()).IsNotZero())
             {
                 return NoError();
             }

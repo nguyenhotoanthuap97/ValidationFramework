@@ -20,16 +20,19 @@ namespace MyValidate.SpecifyValidator
 
         public override Validator.Validator Check(object value)
         {
-            return Check("", value.ToString());
+            base.Check(value);
+            return Check("Data", value.ToString());
         }
 
         public override Validator.Validator Check(string name, object value)
         {
+            base.Check(value);
             return Check(name, value.ToString(), string.Format(messagesContainer.IsNotNullOrEmptyMessage, name));
         }
 
         public override Validator.Validator Check(string name, object value, string message)
         {
+            base.Check(value);
             // do the check
             if (value.ToString().IsNotNullOrEmpty())
             {
@@ -39,6 +42,11 @@ namespace MyValidate.SpecifyValidator
             {
                 return AddError(name, message);
             }
+        }
+
+        public override Validator.Validator Check(params object[] values)
+        {
+            return Check(values[0]);
         }
     }
 }

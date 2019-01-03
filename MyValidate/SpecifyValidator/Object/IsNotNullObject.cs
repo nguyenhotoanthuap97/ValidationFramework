@@ -22,16 +22,18 @@ namespace MyValidate.SpecifyValidator.Object
         public override Validator.Validator Check(object value)
         {
             base.Check(value);
-            return Check("", value);
+            return Check("Data", value);
         }
 
         public override Validator.Validator Check(string name, object value)
         {
-             return Check(name, value, string.Format(messagesContainer.IsNotNullMessage, name));
+            base.Check(value);
+            return Check(name, value, string.Format(messagesContainer.IsNotNullMessage, name));
         }
 
         public override Validator.Validator Check(string name, object value, string message)
         {
+            base.Check(value);
             //do the check
             if (value.IsNotNull())
             {
@@ -41,6 +43,11 @@ namespace MyValidate.SpecifyValidator.Object
             {
                 return AddError(name, message);
             }
+        }
+
+        public override Validator.Validator Check(params object[] values)
+        {
+            return Check(values[0]);
         }
     }
 }

@@ -40,13 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attr\ValidatorAttribute.cs" />
     <Compile Include="Result\ErrorByName.cs" />
     <Compile Include="Result\IDisplayError.cs" />
     <Compile Include="Result\UniqueError.cs" />
+    <Compile Include="SpecifyValidator\Datetime\IsDate.cs" />
+    <Compile Include="SpecifyValidator\Datetime\IsGreaterThanDate.cs" />
+    <Compile Include="SpecifyValidator\Datetime\IsSmallerThanDate.cs" />
+    <Compile Include="SpecifyValidator\Number\IsNotZero.cs" />
     <Compile Include="SpecifyValidator\Object\IsNotNullObject.cs" />
+    <Compile Include="SpecifyValidator\Object\IsNotObject.cs" />
+    <Compile Include="SpecifyValidator\Object\IsObject.cs" />
     <Compile Include="SpecifyValidator\String\IsEmailString.cs" />
+    <Compile Include="SpecifyValidator\String\IsEqualString.cs" />
+    <Compile Include="SpecifyValidator\String\IsMaxLengthString.cs" />
     <Compile Include="SpecifyValidator\String\IsNotNullOrEmptyString.cs" />
     <Compile Include="SpecifyValidator\String\IsNotNullOrWhiteSpaceString.cs" />
+    <Compile Include="SpecifyValidator\String\IsPassword.cs" />
+    <Compile Include="SpecifyValidator\String\IsRegexString.cs" />
     <Compile Include="ValidateMethod\DatetimeValidateMethod.cs" />
     <Compile Include="ValidateMethod\HelperMethod.cs" />
     <Compile Include="ValidateMethod\IntegerValidateMethod.cs" />
@@ -60,10 +71,6 @@
     <Compile Include="Message\VietnameseMessagesContainer.cs" />
     <Compile Include="Result\ValidationError.cs" />
     <Compile Include="ValidateMethod\TypeValidateMethod.cs" />
-    <Compile Include="Validator\DatetimeValidator.cs" />
-    <Compile Include="Validator\NumberValidator.cs" />
-    <Compile Include="Validator\ObjectValidator.cs" />
-    <Compile Include="Validator\StringValidator.cs" />
     <Compile Include="Validator\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\ValidatorWrapper.cs" />

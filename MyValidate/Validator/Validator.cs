@@ -82,28 +82,14 @@ namespace MyValidate.Validator
             return this;
         }
 
-        public Validator Must(Func<bool> func)
+        public virtual Validator Check(params object[] values)
         {
-            return Must("", func);
+            return this;
         }
 
-        public Validator Must(string name, Func<bool> func)
+        public virtual Validator Check(Func<bool> f, object value, string customErrorMessage)
         {
-            return Must(name, func, messagesContainer.IsNotMessage);
+            return this;
         }
-
-        public Validator Must(string name, Func<bool> func, string message)
-        {
-            if (func())
-            {
-
-                return AddError(name, message);
-            }
-            else
-            {
-                return NoError();
-            }
-        }
-
     }
 }

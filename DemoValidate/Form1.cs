@@ -13,21 +13,16 @@ namespace DemoValidate
         public Form1()
         {
             InitializeComponent();
-            //validator = new Validator(LangCode.vi);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Validator validator = new IsEmailString(LangCode.en);
-
-            string text = (textBox1.Text);
-            validator.Check(text);
-
             Validator validator2 = new IsNotNullOrEmptyString(validator);
-            validator2.Check(text);
-
             Validator validator3 = new IsNotNullOrWhiteSpaceString(validator2);
+            string text = (textBox1.Text);
+
             validator3.Check(text);
 
             MessageBox.Show(validator3.ErrorToString(new UniqueError()));

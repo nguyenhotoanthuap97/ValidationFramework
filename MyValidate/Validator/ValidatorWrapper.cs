@@ -31,20 +31,37 @@ namespace MyValidate.Validator
 
         public override Validator Check(object value)
         {
-            innerValidator.Check(value);
+            if (innerValidator != null)
+                innerValidator.Check(value);
             return base.Check(value);
         }
 
         public override Validator Check(string name, object value)
         {
-            innerValidator.Check(value);
+            if (innerValidator != null)
+                innerValidator.Check(value);
             return base.Check(name, value);
         }
 
         public override Validator Check(string name, object value, string message)
         {
-            innerValidator.Check(value);
+            if (innerValidator != null)
+                innerValidator.Check(value);
             return base.Check(name, value, message);
+        }
+
+        public override Validator Check(params object[] values)
+        {
+            if (innerValidator != null)
+                innerValidator.Check(values);
+            return base.Check(values);
+        }
+
+        public override Validator Check(Func<bool> f, object value, string customErrorMessage)
+        {
+            if (innerValidator != null)
+                innerValidator.Check(value);
+            return base.Check(f, value, customErrorMessage);
         }
 
         public override string ErrorToString(IDisplayError error)
